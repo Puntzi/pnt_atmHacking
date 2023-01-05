@@ -23,7 +23,7 @@ local function startThermite()
     exports['ps-ui']:Thermite(function(success)
         TriggerServerEvent('pnt_atmHacking:rob', success)
         FreezeEntityPosition(cache.ped, false)
-        Clearcache.pedTasks(cache.ped)
+        ClearPedTasks(cache.ped)
     end, MiniGames.Thermite.timeToFail, MiniGames.Thermite.gridSize, MiniGames.Thermite.incorrectBlocks)
 end
 
@@ -32,19 +32,19 @@ local function startScrambler()
     exports['ps-ui']:Scrambler(function(success)
         TriggerServerEvent('pnt_atmHacking:rob', success)
         FreezeEntityPosition(cache.ped, false)
-        Clearcache.pedTasks(cache.ped)
+        ClearPedTasks(cache.ped)
     end, MiniGames.Scrambler.type, MiniGames.Scrambler.timeToFail, MiniGames.Scrambler.mirrored)
 end
 
 
 
 RegisterNetEvent('pnt_atmHacking:msgPolice', function()
-    local cache.pedCoords = GetEntityCoords(cache.ped)
-    local streetName, crossingRoad = GetStreetNameFromHashKey(GetStreetNameAtCoord(cache.pedCoords.x, cache.pedCoords.y, cache.pedCoords.z, 0, 0))
+    local pedCoords = GetEntityCoords(cache.ped)
+    local streetName, crossingRoad = GetStreetNameFromHashKey(GetStreetNameAtCoord(pedCoords.x, pedCoords.y, pedCoords.z, 0, 0))
 
     ESX.ShowNotification(_U("robbing_atm", ('%s')):format(streetName))
 
-    local blip = AddBlipForCoord(cache.pedCoords.x, cache.pedCoords.y, cache.pedCoords.z)
+    local blip = AddBlipForCoord(pedCoords.x, pedCoords.y, pedCoords.z)
 
 	SetBlipSprite(blip, Config.BlipRob.sprite)
 	SetBlipScale(blip, Config.BlipRob.scale)
@@ -97,7 +97,7 @@ RegisterNetEvent('pnt_atmHacking:startHacking', function()
                         break
                     elseif IsControlJustPressed(0, 74) then 
                         FreezeEntityPosition(cache.ped, false)
-                        Clearcache.pedTasks(cache.ped)
+                        ClearPedTasks(cache.ped)
                         lib.hideTextUI()
                         break
                     end
