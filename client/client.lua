@@ -1,7 +1,6 @@
 local ox_target = exports.ox_target
 local ox_inventory = exports.ox_inventory
 local MiniGames = Config.MiniGames
-local ped = cache.ped
 
 ox_target:addModel(Config.ModelATM, {
     {
@@ -23,8 +22,8 @@ local function startThermite()
     Wait(1000)
     exports['ps-ui']:Thermite(function(success)
         TriggerServerEvent('pnt_atmHacking:rob', success)
-        FreezeEntityPosition(ped, false)
-        ClearPedTasks(ped)
+        FreezeEntityPosition(cache.ped, false)
+        Clearcache.pedTasks(cache.ped)
     end, MiniGames.Thermite.timeToFail, MiniGames.Thermite.gridSize, MiniGames.Thermite.incorrectBlocks)
 end
 
@@ -32,20 +31,20 @@ local function startScrambler()
     Wait(1000)
     exports['ps-ui']:Scrambler(function(success)
         TriggerServerEvent('pnt_atmHacking:rob', success)
-        FreezeEntityPosition(ped, false)
-        ClearPedTasks(ped)
+        FreezeEntityPosition(cache.ped, false)
+        Clearcache.pedTasks(cache.ped)
     end, MiniGames.Scrambler.type, MiniGames.Scrambler.timeToFail, MiniGames.Scrambler.mirrored)
 end
 
 
 
 RegisterNetEvent('pnt_atmHacking:msgPolice', function()
-    local pedCoords = GetEntityCoords(ped)
-    local streetName, crossingRoad = GetStreetNameFromHashKey(GetStreetNameAtCoord(pedCoords.x, pedCoords.y, pedCoords.z, 0, 0))
+    local cache.pedCoords = GetEntityCoords(cache.ped)
+    local streetName, crossingRoad = GetStreetNameFromHashKey(GetStreetNameAtCoord(cache.pedCoords.x, cache.pedCoords.y, cache.pedCoords.z, 0, 0))
 
     ESX.ShowNotification(_U("robbing_atm", ('%s')):format(streetName))
 
-    local blip = AddBlipForCoord(pedCoords.x, pedCoords.y, pedCoords.z)
+    local blip = AddBlipForCoord(cache.pedCoords.x, cache.pedCoords.y, cache.pedCoords.z)
 
 	SetBlipSprite(blip, Config.BlipRob.sprite)
 	SetBlipScale(blip, Config.BlipRob.scale)
@@ -85,20 +84,20 @@ end
 RegisterNetEvent('pnt_atmHacking:startHacking', function()
     ESX.TriggerServerCallback('pnt_atmHacking:checkPolice', function(police)
         if police then
-            FreezeEntityPosition(ped, true)
-            TaskStartScenarioAtPosition(ped, "WORLD_HUMAN_STAND_MOBILE", GetEntityCoords(ped), GetEntityHeading(ped), 0, 0, 0)
+            FreezeEntityPosition(cache.ped, true)
+            TaskStartScenarioAtPosition(cache.ped, "WORLD_HUMAN_STAND_MOBILE", GetEntityCoords(cache.ped), GetEntityHeading(cache.ped), 0, 0, 0)
             lib.showTextUI(_U("start_hacking_or_not"))
             CreateThread(function()
                 while true do 
                     if IsControlJustPressed(0, 38) then
                         TriggerServerEvent('pnt_atmHacking:msgPolice')
-                        FreezeEntityPosition(ped, false)
+                        FreezeEntityPosition(cache.ped, false)
                         chooseMinigame()
                         lib.hideTextUI()
                         break
                     elseif IsControlJustPressed(0, 74) then 
-                        FreezeEntityPosition(ped, false)
-                        ClearPedTasks(ped)
+                        FreezeEntityPosition(cache.ped, false)
+                        Clearcache.pedTasks(cache.ped)
                         lib.hideTextUI()
                         break
                     end
