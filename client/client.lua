@@ -59,10 +59,6 @@ RegisterNetEvent('pnt_atmHacking:msgPolice', function()
     RemoveBlip(blip)
 end)
 
-RegisterCommand('test', function()
-    TriggerServerEvent('pnt_atmHacking:msgPolice')
-end)
-
 local function chooseMinigame()
     if MiniGames.Thermite and MiniGames.Scrambler then
         local random = math.random(1, 2)
