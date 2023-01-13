@@ -22,6 +22,6 @@
 },
 ```
 
-Thanks to [Patrisfs]([https://streamable.com/ium4so](https://github.com/Patrisfs)) for the BR tranlation :D
+Thanks to [Patrisfs]([https://streamable.com/ium4so](https://github.com/Patrisfs)) https://github.com/Patrisfs for the BR tranlation :D
 
 ##### Any improve to the script just tell me and i will update it, feel free to do any pull request for code improve or anything :smiley:
