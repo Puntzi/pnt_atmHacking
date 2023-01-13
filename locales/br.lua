@@ -1,4 +1,4 @@
-Locales['en'] = {
+Locales['br'] = {
     ['hack_atm'] = 'Hackear ATM',
     ['error_minigame_not_active'] = 'ERRO PRECISA ATIVAR O MINIGAME',
     ['start_hacking_or_not'] = 'E - Começar a hackear  \nH - Para cancelar',
