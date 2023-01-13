@@ -1,0 +1,10 @@
+Locales['br'] = {
+    ['hack_atm'] = 'Hackear ATM',
+    ['error_minigame_not_active'] = 'ERRO PRECISA ATIVAR O MINIGAME',
+    ['start_hacking_or_not'] = 'E - Começar a hackear  \nH - Para cancelar',
+    ['noth_enough_police'] = 'Sem polícia suficiente na cidade',
+    ['money_earned'] = 'Você pegou %s $',
+    ['hacking_failed'] = 'Você não conseguiu hackear isso',
+    ['atm_robbing'] = 'Roubo de ATM',
+    ['robbing_atm'] = "Alguém está roubando o ATM %s"
+}
