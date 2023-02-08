@@ -1,7 +1,5 @@
 Config = Config or {}
 
-Config.Locale = 'en'
-
 Config.PoliceNameDatabase = 'police'
 Config.MinPolice = 1
 

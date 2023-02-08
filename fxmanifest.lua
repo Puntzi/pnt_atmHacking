@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'Puntzi'
 description 'Simple hacking ATM'
-version '1.0.0'
+version '1.1.0'
 
 client_scripts {
     'client/client.lua'
@@ -16,8 +16,10 @@ server_scripts {
 
 shared_scripts {
     '@es_extended/imports.lua',
-    '@es_extended/locale.lua',
     '@ox_lib/init.lua',
-    'locales/*.lua',
     'config.lua'
+}
+
+files {
+    'locales/*.json'
 }

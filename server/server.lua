@@ -1,12 +1,12 @@
 local ox_inventory = exports.ox_inventory
 local license, discord
 
-ESX.RegisterServerCallback('pnt_atmHacking:checkPolice', function(source, cb)
+lib.callback.register('pnt_atmHacking:checkPolice', function(source)
     local xPlayers = ESX.GetExtendedPlayers('job', Config.PoliceNameDatabase)
     if #xPlayers >= Config.MinPolice then 
-        return cb(true)
+        return true
     end
-    return cb(false)
+    return false
 end)
 
 RegisterNetEvent('pnt_atmHacking:callPolice', function()

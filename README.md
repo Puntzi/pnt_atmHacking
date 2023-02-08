@@ -13,6 +13,15 @@
 * ox_target
 * ps-ui
 
+**Update 1.1.0**
+* Updated locale system using ox_lib
+
+***How to change the locale from my server?***
+* To change the preferred language from English, add the convar to your server.cfg
+```
+setr ox:locale en
+```
+
 ***Remember to add this to your ox_inventory***
 ```
 ['hack_device'] = {
